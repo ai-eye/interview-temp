@@ -1,0 +1,26 @@
+<div class="container">
+    <ng-container *ngIf="vehicleList$ | async as vehicleList">
+        <div class="vehicle__list">
+            <div class="vehicle__card" *ngFor="let veh of vehicleList">
+                <div class="vehicle__image vehicle__image--standard">
+                    <img [src]="'./assets' + veh.media[0].url" alt="vehicle image" [errorImage]="'./assets/images/16x9/placeholder16x9.png'" />
+                </div>
+                <div class="vehicle__image vehicle__image--thumbnail">
+                    <img [src]="'./assets' + veh.media[1].url" alt="vehicle image" [errorImage]="'./assets/images/1x1/placeholder470x470.png'" />
+                </div>
+                <div class="vehicle__info">
+                    <div class="vehicle__title">
+                        <span class="vehicle__title vehicle__title--tram-lines" id="vehicle-name-{{veh.id}}">{{veh.name}}</span>
+                    </div>
+                    <div class="vehicle__price">
+                        <!-- from {{veh.price | currency}} -->
+                        From £76,000
+                    </div>
+                    <div class="vehicle__notes">
+                        The pinnacle of refined capability
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+</div>

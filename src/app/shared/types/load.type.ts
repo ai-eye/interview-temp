@@ -1,0 +1,1 @@
+export declare type loadType = 'idle' | 'pending' | 'success' | 'error';

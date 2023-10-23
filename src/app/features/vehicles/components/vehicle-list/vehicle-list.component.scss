@@ -1,0 +1,117 @@
+.vehicle__card {
+    display: grid;
+    font-size: 24px;
+    grid-template-columns: 30% 70%;
+    grid-template-rows: 1fr;
+}
+
+.vehicle__list {
+    display: grid;
+}
+
+.vehicle__image {
+    img {
+        height: auto;
+        width: 100%;
+        object-fit: cover;
+    }
+    
+    line-height: 0;
+
+    &--standard {
+        display: none;
+    }
+    
+    &--thumbnail {
+        display: block;
+    }
+}
+
+.vehicle__info {
+    align-items: flex-start;
+    border: 1px solid lightgray;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 40px;
+}
+
+.vehicle__price {
+    letter-spacing: 2px;
+    padding-bottom: 20px;
+}
+
+.vehicle__notes {
+    letter-spacing: 0.9px;
+}
+
+.vehicle__price, .vehicle__notes {
+    color: #696969;
+    font-family: system-ui;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.vehicle__title {
+    font-size: 32px;
+    &--tram-lines {
+        border: none;
+    }
+}
+
+// MEDIA QUERIES FROM HERE ON DOWN ...
+@media screen and (min-width: 768px) {
+    .vehicle__card {
+        grid-template-columns: 1fr;
+    }
+    
+    .vehicle__image {
+        &--standard {
+            display: block;
+        }
+        
+        &--thumbnail {
+            display: none;
+        }
+    }
+
+    .vehicle__info {
+        align-items: center;
+        padding: 20px;
+    }
+    
+    .vehicle__list {
+        grid-template-columns: repeat(2, 2fr);
+    }
+    
+    .vehicle__notes {
+        letter-spacing: initial;
+        text-align: center;
+    }
+
+    .vehicle__price {
+        letter-spacing: 1.5px;
+        min-height: 40px;
+    }
+    
+    .vehicle__notes {
+        font-size: 16px;
+        font-weight: 600;
+    }
+    
+    .vehicle__title {
+        font-size: 20px;
+        min-height: 50px;
+        &--tram-lines {
+            border-bottom: 2px solid black;
+            border-top: 2px solid black;
+            padding: 5px 0;
+        }
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .vehicle__list {
+        grid-template-columns: repeat(4, 4fr);
+    }
+}
