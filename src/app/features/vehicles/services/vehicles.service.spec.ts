@@ -78,7 +78,6 @@ fdescribe('VehiclesService', () => {
   });
 
   afterEach(() => {
-    // After every test, assert that there are no more pending requests.
     httpTestingController.verify();
   });
 
@@ -96,20 +95,16 @@ fdescribe('VehiclesService', () => {
     });
 
     it('should return expected vehicle list (HttpClient called once)', (done: DoneFn) => {
-
       service.getVehicles().subscribe({
         next: vehicles =>
-          expect(vehicles)
-            .toEqual(expectedVehicles, 'should return expected vehicles'),
+          expect(vehicles).toEqual(jasmine.arrayWithExactContents(expectedVehicles)),
         error: fail
       });
 
-       // HeroService should have made one request to GET heroes from expected URL
-       const req = httpTestingController.expectOne(service.serverPath + service.vehiclesApiUrl);
-       expect(req.request.method).toEqual('GET');
- 
-       // Respond with the mock heroes
-       req.flush(expectedVehicles);
+      const req = httpTestingController.expectOne(service.serverPath + service.vehiclesApiUrl);
+      expect(req.request.method).toEqual('GET');
+
+      req.flush(expectedVehicles);
     });
   });
 });
